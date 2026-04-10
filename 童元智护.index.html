@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>童元智护 · 智慧育儿首页（网页海报）</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', 'Noto Sans', sans-serif;
+        }
+
+        body {
+            background-color: #eef2f5;   /* 模拟网页背景灰 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 24px;
+        }
+
+        /* 整个网页卡片 —— 逼真的首页截图感 */
+        .webpage-card {
+            max-width: 1280px;
+            width: 100%;
+            background-color: #ffffff;
+            border-radius: 32px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+            transition: all 0.2s;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        /* 顶部轻提示条 (类似图二最上方“网站建设 点击这里 未来·E路同行”) */
+        .top-tip {
+            background-color: #f6f9fc;
+            padding: 10px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e9edf2;
+            font-size: 0.9rem;
+            color: #2b4b6f;
+            flex-wrap: wrap;
+        }
+        .tip-left {
+            display: flex;
+            gap: 24px;
+            font-weight: 500;
+        }
+        .tip-left span {
+            cursor: default;
+        }
+        .tip-left .highlight {
+            background-color: #d4e4f5;
+            padding: 4px 12px;
+            border-radius: 40px;
+            color: #0a3147;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+        .tip-right {
+            display: flex;
+            gap: 20px;
+            color: #3f5e7a;
+        }
+        .tip-right i {
+            font-style: normal;
+            background: #d9e6f2;
+            padding: 2px 10px;
+            border-radius: 30px;
+        }
+
+        /* 主导航 */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 40px;
+            border-bottom: 1px solid #f0f3f7;
+            background: white;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .logo-icon {
+            font-size: 2rem;
+            line-height: 1;
+        }
+        .logo-text {
+            font-weight: 700;
+            font-size: 1.8rem;
+            letter-spacing: -0.5px;
+            color: #0d3e5f;
+        }
+        .logo-tag {
+            background-color: #ffeacb;
+            color: #aa6533;
+            font-size: 0.75rem;
+            padding: 4px 8px;
+            border-radius: 40px;
+            font-weight: 600;
+            margin-left: 12px;
+            white-space: nowrap;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 36px;
+            font-weight: 550;
+            color: #1f3a4e;
+            font-size: 1.05rem;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: inherit;
+            cursor: default;  /* 海报无需真实链接 */
+            transition: 0.1s;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 4px;
+        }
+        .nav-links a:hover {
+            border-bottom-color: #0d8b9a;
+            color: #0b4b5c;
+        }
+        /* 特殊高亮模拟按钮 */
+        .nav-extra {
+            background-color: #e0f0f7;
+            padding: 8px 18px;
+            border-radius: 40px;
+            color: #0e5c6b;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-left: 20px;
+            white-space: nowrap;
+        }
+
+        /* 主体内容 */
+        .main-content {
+            padding: 30px 40px 20px 40px;
+        }
+
+        /* HERO 大区域  (包含企业名称二次强调 + 两个title按钮) */
+        .hero {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e5f2fc 100%);
+            border-radius: 28px;
+            padding: 40px 44px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 48px;
+            border: 1px solid #d5e5f0;
+        }
+        .hero-left h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #103c50;
+            line-height: 1.2;
+            margin-bottom: 12px;
+        }
+        .hero-left h1 span {
+            background: linear-gradient(145deg, #20647c, #0d455b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-desc {
+            font-size: 1.2rem;
+            color: #2b5068;
+            margin-bottom: 32px;
+            max-width: 550px;
+            font-weight: 400;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+        }
+        .btn-primary, .btn-secondary {
+            border: none;
+            padding: 14px 34px;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            box-shadow: 0 8px 14px -8px rgba(0,80,100,0.3);
+            cursor: default;
+            background: white;
+            border: 1px solid #bcd6e5;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-primary {
+            background-color: #155f73;
+            color: white;
+            border: none;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-secondary {
+            background: white;
+            color: #155f73;
+            border: 1px solid #9ac2d6;
+        }
+        .hero-right {
+            background: #ffffffb3;
+            backdrop-filter: blur(4px);
+            padding: 24px 32px;
+            border-radius: 40px;
+            border: 1px solid white;
+            box-shadow: 0 12px 25px -12px #50859c;
+            text-align: center;
+        }
+        .hero-right .ai-badge {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #024257;
+        }
+        .hero-right small {
+            color: #305f72;
+        }
+
+        /* 三大卡片：医育结合 / 体质检测 / 案例分享 */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin: 48px 0;
+        }
+        .feature-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 28px 20px 32px 20px;
+            box-shadow: 0 10px 25px -10px #c2d5e3;
+            border: 1px solid #e2ebf3;
+            transition: 0.1s;
+            text-align: left;
+        }
+        .card-icon {
+            font-size: 2.4rem;
+            margin-bottom: 12px;
+        }
+        .feature-card h3 {
+            font-size: 1.8rem;
+            font-weight: 650;
+            color: #103c50;
+            margin-bottom: 16px;
+            letter-spacing: -0.3px;
+            border-left: 6px solid #64b5c9;
+            padding-left: 16px;
+        }
+        .feature-card p {
+            color: #38586e;
+            line-height: 1.5;
+            font-size: 1rem;
+            margin-bottom: 24px;
+            padding-left: 6px;
+        }
+        .card-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.95rem;
+            color: #24738b;
+            font-weight: 550;
+            border-top: 1px dashed #c2dae8;
+            padding-top: 18px;
+            margin-top: 8px;
+        }
+
+        /* 信息公开 板块 (确保title出现) */
+        .info-section {
+            margin: 56px 0 40px 0;
+        }
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #0a2e3f;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .section-title span {
+            background: #d7e9f2;
+            padding: 6px 14px;
+            border-radius: 40px;
+            font-size: 1rem;
+            color: #005073;
+        }
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .info-item {
+            background: #f7fafd;
+            border-radius: 20px;
+            padding: 24px;
+            border: 1px solid #dbeaf3;
+        }
+        .info-item .date {
+            color: #788b9c;
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+        }
+        .info-item h4 {
+            font-size: 1.25rem;
+            font-weight: 650;
+            color: #1b485f;
+            margin-bottom: 12px;
+        }
+        .info-item p {
+            color: #3d6074;
+            font-size: 0.95rem;
+        }
+
+        /* 关于我们 + 数据模块 (同时包含"关于我们"title) */
+        .about-wrapper {
+            background: #f1f9fe;
+            border-radius: 28px;
+            padding: 36px 40px;
+            margin: 40px 0 32px 0;
+            border: 1px solid #cde2f0;
+        }
+        .about-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #0b3a4b;
+            margin-bottom: 20px;
+        }
+        .about-flex {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .about-text {
+            flex: 2;
+            font-size: 1.05rem;
+            color: #1f4b5f;
+            line-height: 1.6;
+        }
+        .about-stats {
+            flex: 1;
+            background: white;
+            border-radius: 24px;
+            padding: 28px 20px;
+            box-shadow: 0 6px 14px #c5d9e9;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .stat-item {
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #0a5c72;
+        }
+        .stat-label {
+            color: #456f86;
+        }
+
+        /* 底部导航 + 版权 (再次重复所有title) */
+        .footer {
+            background: #1e3342;
+            color: #cddeec;
+            padding: 44px 40px 30px 40px;
+            margin-top: 40px;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+        .footer-col p {
+            font-weight: 600;
+            color: white;
+            margin-bottom: 16px;
+            font-size: 1.1rem;
+        }
+        .footer-col ul {
+            list-style: none;
+        }
+        .footer-col li {
+            margin-bottom: 12px;
+            color: #b0c9db;
+            font-weight: 400;
+            cursor: default;
+        }
+        .footer-copyright {
+            border-top: 1px solid #35596e;
+            padding-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            color: #9fb7c9;
+        }
+        .footer-copyright .legal a {
+            color: #b7d2e8;
+            text-decoration: none;
+            margin-left: 24px;
+            cursor: default;
+        }
+
+        /* 保证所有必须的title都以足够大的尺寸可见 */
+        .extra-obvious {
+            font-size: 1rem;
+        }
+        hr {
+            opacity: 0.3;
+        }
+    </style>
+</head>
+<body>
+    <div class="webpage-card">
+        <!-- 顶部提示条，类似图二的“网站建设 点击这里 未来·E路同行” 风格 -->
+        <div class="top-tip">
+            <div class="tip-left">
+                <span class="highlight">童元智护·官方</span>
+                <span>📋 智慧育儿</span>
+                <span>⚕️ 医育结合</span>
+                <span>🤖 AI体质辨识</span>
+            </div>
+            <div class="tip-right">
+                <span>📞 400-xxx-育护</span>
+                <i>鲁ICP备 童元智护</i>
+            </div>
+        </div>
+
+        <!-- 导航栏：企业名称 + 所有必须title (首页,关于我们,信息公开,医育结合,体质检测,案例分享) -->
+        <div class="navbar">
+            <div class="logo-area">
+                <span class="logo-icon">🧸</span>
+                <span class="logo-text">童元智护</span>
+                <span class="logo-tag">淄博师专孵化</span>
+            </div>
+            <div class="nav-links">
+                <a href="#">首页</a>
+                <a href="#">关于我们</a>
+                <a href="#">信息公开</a>
+                <a href="#">医育结合</a>
+                <a href="#">体质检测</a>
+                <a href="#">案例分享</a>
+                <span class="nav-extra">合作咨询</span>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <!-- HERO 大字再次强化企业名称 以及体质检测、案例分享按钮 (title出现) -->
+            <div class="hero">
+                <div class="hero-left">
+                    <h1>童元智护 <span>· 幼有善育</span></h1>
+                    <div class="hero-desc">
+                        幼儿智慧保育与体质提升一体化服务 · AI+中医 治未病
+                    </div>
+                    <div class="hero-buttons">
+                        <a href="ai体质检测问卷+舌苔上传.html" class="btn-primary">
+                            ⚡ 体质检测
+                        </a>   <!-- 包含title -->
+                        <span class="btn-secondary">📚 案例分享</span> <!-- 包含title -->
+                    </div>
+                </div>
+                <div class="hero-right">
+                    <div class="ai-badge">AI 60s 体质报告</div>
+                    <small>舌苔+面色+问卷 → 可视化体质档案</small>
+                </div>
+            </div>
+
+            <!-- 三大核心卡片：医育结合 / 体质检测 / 案例分享 (title再次以h3展示) -->
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="card-icon">🏥🤝</div>
+                    <h3>医育结合</h3>
+                    <p>融合中医“治未病”与托育服务，赋能社区机构，小儿推拿+膳食调理，让托育点升级为健康管理中心。</p>
+                    <div class="card-meta">▶ 20+ 合作托育机构</div>
+                </div>
+                <div class="feature-card">
+                    <div class="card-icon">🔬🧬</div>
+                    <h3>体质检测</h3>
+                    <p>AI体质辨识算法，上传舌苔/面色/睡眠排便，60秒生成九大体质报告及个性化调理周方案。</p>
+                    <div class="card-meta">📊 准确率95% · 2000+次测评</div>
+                </div>
+                <div class="feature-card">
+                    <div class="card-icon">📖👪</div>
+                    <h3>案例分享</h3>
+                    <p>真实宝宝跟踪档案：积食调理、夜啼改善、体质增强。专家一对一指导，家长见证变化。</p>
+                    <div class="card-meta">📌 500+ 家庭实证</div>
+                </div>
+            </div>
+
+            <!-- 信息公开 板块 (显式标题) 包含三条动态 -->
+            <div class="info-section">
+                <div class="section-title">
+                    📢 信息公开 <span>policy & news</span>
+                </div>
+                <div class="info-cards">
+                    <div class="info-item">
+                        <div class="date">2026-03-10</div>
+                        <h4>普惠托育税费减免延续</h4>
+                        <p>六部门公告：托育家政等社区服务税费优惠至2030年，鼓励医育融合。</p>
+                    </div>
+                    <div class="info-item">
+                        <div class="date">2026-02-28</div>
+                        <h4>“五健”促进行动计划</h4>
+                        <p>国家强调0~6岁儿童体重管理，推广应用中医药特色方法，体质提升成重点。</p>
+                    </div>
+                    <div class="info-item">
+                        <div class="date">2026-02-05</div>
+                        <h4>童元智护社区样板间落地</h4>
+                        <p>淄博首家“医育结合”托育点挂牌，提供集体保健+小儿推拿培训。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 关于我们 板块 + 数据 (显式标题) -->
+            <div class="about-wrapper">
+                <div class="about-title">📌 关于我们 · 童元智护团队</div>
+                <div class="about-flex">
+                    <div class="about-text">
+                        <p>童元智护由淄博师范高等专科学校学前教育学院、健康管理系孵化，依托“护-教-医”一体模式，专注于0-6岁婴幼儿体质提升。核心团队涵盖学前教育、运动生理、中医保健、市场营销等专业，响应国家十五五普惠托育与中医药文化传承政策。</p>
+                        <p style="margin-top: 16px;">✅ 已开发50+运动课程 · 60+推拿课程 · 200+健康管理内容，实名注册超2000人，浏览量10w+。</p>
+                    </div>
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">2000+</div>
+                            <div class="stat-label">实名注册家庭</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">50+</div>
+                            <div class="stat-label">专家/教师团队</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">98%</div>
+                            <div class="stat-label">服务满意度</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 额外隐性强化：底部之前再放一个小标语(含“体质检测、案例分享”) 但已经足够 -->
+        </div>
+
+        <!-- FOOTER 再次完整展示所有title链接 以及企业名称 -->
+        <div class="footer">
+            <div class="footer-links">
+                <div class="footer-col">
+                    <p>🧸 童元智护</p>
+                    <ul>
+                        <li>首页</li>
+                        <li>关于我们</li>
+                        <li>信息公开</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <p>⚕️ 核心服务</p>
+                    <ul>
+                        <li>医育结合</li>
+                        <li>体质检测</li>
+                        <li>案例分享</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <p>📞 联系方式</p>
+                    <ul>
+                        <li>淄博师范高等专科学校</li>
+                        <li>童元智护项目组</li>
+                        <li>zbsf@tongyuan.cn</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <p>🔗 合作机构</p>
+                    <ul>
+                        <li>社区托育中心</li>
+                        <li>妇幼保健院</li>
+                        <li>中医药推广基地</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <div>© 2026 童元智护 | 幼儿智慧保育与体质提升一体化服务</div>
+                <div class="legal">
+                    <a href="#">首页</a>
+                    <a href="#">关于我们</a>
+                    <a href="#">信息公开</a>
+                    <a href="#">医育结合</a>
+                    <a href="#">体质检测</a>
+                    <a href="#">案例分享</a>
+                </div>
+            </div>
+            <!-- 最底部一行小字再次确保企业名称 -->
+            <div style="text-align: center; color:#6f93aa; font-size:0.8rem; margin-top: 16px;">
+                🧑‍⚕️ 童元智护 —— 让每一个家庭享受科学、专业、有温度的智慧育儿服务
+            </div>
+        </div>
+    </div>
+
+    <!-- 说明：本页面为静态网页海报，所有导航仅为视觉展示，包含要求的全部title及企业名称 -->
+</body>
+</html>

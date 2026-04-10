@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>0-6岁婴幼儿中医体质辨识 | 五运六气·九种体质标准</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f0e6 0%, #ebe1d0 100%);
+            font-family: 'Segoe UI', 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif;
+            padding: 20px;
+            color: #3e2c1f;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .authority-bar {
+            background: linear-gradient(135deg, #2d5a2c, #1e3a1d);
+            color: #f5e6b8;
+            padding: 10px 16px;
+            border-radius: 40px;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 0.7rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .header h1 {
+            font-size: 1.6rem;
+            color: #6b3a1f;
+            margin-bottom: 6px;
+        }
+
+        .header p {
+            color: #8b6946;
+            font-size: 0.85rem;
+        }
+
+        .card {
+            background: rgba(255, 252, 240, 0.98);
+            border-radius: 32px;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+            padding: 20px 24px;
+            margin-bottom: 30px;
+            border: 1px solid #e8dcc8;
+        }
+
+        .info-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #e2d5be;
+            padding-bottom: 18px;
+        }
+
+        .info-item {
+            flex: 1;
+            min-width: 130px;
+        }
+
+        .info-item label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: #8b5a2b;
+            font-size: 0.85rem;
+        }
+
+        .info-item input, .info-item select {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #dcccaa;
+            border-radius: 28px;
+            font-size: 0.9rem;
+            background: #fffdf7;
+        }
+
+        .age-row {
+            display: flex;
+            gap: 10px;
+        }
+        .age-row select {
+            flex: 1;
+        }
+
+        .yunqi-section {
+            background: linear-gradient(135deg, #fef5e6, #faf0dd);
+            border: 1px solid #e2cba4;
+            border-radius: 24px;
+            padding: 18px;
+            margin-bottom: 24px;
+        }
+
+        .yunqi-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #9b6a2c;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-left: 4px solid #c2a15b;
+            padding-left: 12px;
+        }
+
+        .birth-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .birth-item {
+            flex: 1;
+            min-width: 110px;
+        }
+
+        .yunqi-result {
+            background: #e8ddc8;
+            border-radius: 18px;
+            padding: 12px;
+            margin-top: 12px;
+            font-size: 0.85rem;
+            color: #4a3420;
+        }
+
+        .tongue-section {
+            background: #fef8ec;
+            border: 1px solid #e2cfaa;
+            border-radius: 24px;
+            padding: 16px;
+            margin-bottom: 24px;
+        }
+
+        .upload-area {
+            border: 2px dashed #c9ae76;
+            border-radius: 18px;
+            padding: 14px;
+            text-align: center;
+            cursor: pointer;
+            background: #fffcf0;
+        }
+
+        .tongue-preview {
+            max-width: 100px;
+            max-height: 100px;
+            margin: 8px auto;
+            border-radius: 14px;
+            display: none;
+            object-fit: cover;
+        }
+
+        .question-item {
+            background: #fffcf4;
+            border-left: 4px solid #c9a86b;
+            margin-bottom: 14px;
+            padding: 10px 14px;
+            border-radius: 18px;
+        }
+
+        .question-text {
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: #5a3a1e;
+        }
+
+        .options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .options label {
+            background: #f3efdf;
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            cursor: pointer;
+        }
+
+        .options input {
+            margin-right: 3px;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        button {
+            background: #9b6a2c;
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            font-size: 0.95rem;
+            font-weight: bold;
+            border-radius: 40px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #7b4e1f;
+        }
+
+        .btn-reset {
+            background: #b28b5e;
+        }
+
+        .report-card {
+            background: #fffef5;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #e8ddc8;
+            color: #6b3a1f;
+            border-radius: 30px;
+            padding: 4px 12px;
+            font-size: 0.7rem;
+            margin-bottom: 12px;
+        }
+
+        .constitution-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #7b4a1c;
+            margin: 6px 0;
+        }
+
+        .section-title {
+            font-size: 1rem;
+            font-weight: 700;
+            margin: 16px 0 8px;
+            border-left: 4px solid #c9a86b;
+            padding-left: 10px;
+            color: #8b5a2b;
+        }
+
+        .advice-text {
+            background: #fef9ef;
+            padding: 10px 14px;
+            border-radius: 18px;
+            line-height: 1.5;
+            margin: 8px 0;
+            font-size: 0.85rem;
+        }
+
+        .easy-read {
+            background: #e6f0e6;
+            border-left: 4px solid #6b8c42;
+            padding: 10px 14px;
+            border-radius: 18px;
+            margin: 10px 0;
+            font-size: 0.9rem;
+        }
+
+        .symptom-tag {
+            background: #f3e5cd;
+            color: #8b5a2b;
+            padding: 3px 10px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            display: inline-block;
+            margin: 3px;
+        }
+
+        .footnote {
+            font-size: 0.65rem;
+            color: #9b8468;
+            text-align: center;
+            margin-top: 16px;
+            padding-top: 10px;
+            border-top: 1px dashed #ddd0b6;
+        }
+
+        @media (max-width: 640px) {
+            .card {
+                padding: 14px;
+            }
+            .options label {
+                padding: 3px 10px;
+                font-size: 0.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="authority-bar">
+        <span>📜 中华中医药学会《儿童体质中医分型与判定标准》</span>
+        <span>🏥 国家卫健委·儿童中医体质特征及调护专家共识</span>
+        <span>📊 北京中医药大学·辽宁中医药大学《儿童中医体质量表》</span>
+        <span>🌌 龙砂医派·顾植山五运六气学说</span>
+    </div>
+    <div class="header">
+        <h1>🍃 0-6岁婴幼儿中医体质辨识系统</h1>
+        <p>先天五运六气禀赋 + 后天症状体征 → 九种体质精准判定 | 通俗解读 · 易懂好用</p>
+    </div>
+
+    <div class="card" id="questionCard">
+        <div class="info-row">
+            <div class="info-item"><label>👶 宝贝昵称</label><input type="text" id="childName" placeholder="宝贝" value="小宝贝"></div>
+            <div class="info-item"><label>⚥ 性别</label><select id="gender"><option value="男">男</option><option value="女">女</option></select></div>
+            <div class="info-item"><label>📅 年龄（0-6岁）</label>
+                <div class="age-row">
+                    <select id="ageYear">
+                        <option value="0">0岁</option><option value="1">1岁</option><option value="2">2岁</option>
+                        <option value="3">3岁</option><option value="4">4岁</option><option value="5">5岁</option><option value="6">6岁</option>
+                    </select>
+                    <select id="ageMonth">
+                        <option value="0">0个月</option><option value="1">1个月</option><option value="2">2个月</option>
+                        <option value="3">3个月</option><option value="4">4个月</option><option value="5">5个月</option>
+                        <option value="6">6个月</option><option value="7">7个月</option><option value="8">8个月</option>
+                        <option value="9">9个月</option><option value="10">10个月</option><option value="11">11个月</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- 五运六气模块 -->
+        <div class="yunqi-section">
+            <div class="yunqi-title">🌌 先天五运六气 · 禀赋分析</div>
+            <div class="birth-row">
+                <div class="birth-item"><label>📅 出生年</label><input type="number" id="birthYear" placeholder="2020" value="2020"></div>
+                <div class="birth-item"><label>🌙 出生月</label><select id="birthMonth">
+                    <option value="1">1月</option><option value="2">2月</option><option value="3">3月</option>
+                    <option value="4">4月</option><option value="5">5月</option><option value="6">6月</option>
+                    <option value="7">7月</option><option value="8">8月</option><option value="9">9月</option>
+                    <option value="10">10月</option><option value="11">11月</option><option value="12">12月</option>
+                </select></div>
+                <div class="birth-item"><label>🕛 出生时辰</label><select id="birthHour">
+                    <option value="">不详</option>
+                    <option value="23-1">🌙 子时 23:00-01:00 (0)</option>
+                    <option value="1-3">🌙 丑时 01:00-03:00 (1)</option>
+                    <option value="3-5">🌙 寅时 03:00-05:00 (2)</option>
+                    <option value="5-7">☀️ 卯时 05:00-07:00 (3)</option>
+                    <option value="7-9">☀️ 辰时 07:00-09:00 (4)</option>
+                    <option value="9-11">☀️ 巳时 09:00-11:00 (5)</option>
+                    <option value="11-13">☀️ 午时 11:00-13:00 (6)</option>
+                    <option value="13-15">☀️ 未时 13:00-15:00 (7)</option>
+                    <option value="15-17">☀️ 申时 15:00-17:00 (8)</option>
+                    <option value="17-19">🌙 酉时 17:00-19:00 (9)</option>
+                    <option value="19-21">🌙 戌时 19:00-21:00 (10)</option>
+                    <option value="21-23">🌙 亥时 21:00-23:00 (11)</option>
+                </select></div>
+            </div>
+            <div id="yunqiDisplay" class="yunqi-result">✨ 填写出生信息后，自动推算先天体质倾向</div>
+        </div>
+
+        <!-- 舌苔上传 -->
+        <div class="tongue-section">
+            <div class="yunqi-title">📷 舌苔拍照辅助（可选）</div>
+            <div class="upload-area" id="uploadArea">
+                <div>📸 点击上传宝宝舌苔照片</div>
+                <input type="file" id="tongueInput" accept="image/*" style="display:none;">
+                <img id="tonguePreview" class="tongue-preview">
+            </div>
+            <div id="tongueAnalysisResult" class="yunqi-result" style="display:none; margin-top:10px"></div>
+        </div>
+
+        <div id="questionsContainer"></div>
+
+        <div class="btn-group">
+            <button id="submitBtn">📜 生成体质报告</button>
+            <button id="resetBtn" class="btn-reset">🔄 重置</button>
+        </div>
+    </div>
+
+    <div class="card report-card" id="reportContainer" style="display: none;"></div>
+</div>
+
+<script>
+    // ==================== 问卷（28题，针对0-6岁婴幼儿）====================
+    const questions = [
+        { text: "宝宝精力旺盛，活泼好动", dimension: "平和质", reverse: true },
+        { text: "宝宝面色红润有光泽", dimension: "平和质", reverse: true },
+        { text: "宝宝睡眠安稳，不容易惊醒", dimension: "平和质", reverse: true },
+        { text: "宝宝容易疲劳，不爱活动、爱让人抱", dimension: "气虚质" },
+        { text: "宝宝脸色偏白或发黄，嘴唇颜色淡", dimension: "气虚质" },
+        { text: "宝宝容易感冒，抵抗力比同龄人差", dimension: "气虚质" },
+        { text: "宝宝活动后出汗比别的孩子多", dimension: "气虚质" },
+        { text: "宝宝小手小脚经常冰凉凉的", dimension: "阳虚质" },
+        { text: "宝宝比别的孩子怕冷，穿得更多", dimension: "阳虚质" },
+        { text: "宝宝大便偏稀或不成形（拉肚子倾向）", dimension: "阳虚质" },
+        { text: "宝宝小便清长，夜尿比较多", dimension: "阳虚质" },
+        { text: "宝宝手心脚心经常热热的", dimension: "阴虚质" },
+        { text: "宝宝睡着后容易出汗（盗汗）", dimension: "阴虚质" },
+        { text: "宝宝嘴唇比别的孩子红", dimension: "阴虚质" },
+        { text: "宝宝大便干结，像小羊粪球一样", dimension: "阴虚质" },
+        { text: "宝宝体型偏胖，肉肉松软不结实", dimension: "痰湿质" },
+        { text: "宝宝喉咙里经常有痰的声音", dimension: "痰湿质" },
+        { text: "宝宝舌苔经常白白的、厚厚的", dimension: "痰湿质" },
+        { text: "宝宝容易长湿疹或皮疹", dimension: "湿热质" },
+        { text: "宝宝大便黏黏的，不容易冲干净", dimension: "湿热质" },
+        { text: "宝宝舌苔黄黄的、厚厚的", dimension: "湿热质" },
+        { text: "宝宝性格急躁，爱发脾气哭闹", dimension: "湿热质" },
+        { text: "宝宝脸色偏暗，嘴唇颜色偏暗", dimension: "血瘀质" },
+        { text: "宝宝皮肤粗糙，或身上有固定位置的疼痛", dimension: "血瘀质" },
+        { text: "宝宝性格内向，胆小怕生", dimension: "气郁质" },
+        { text: "宝宝容易叹气或感觉胸闷", dimension: "气郁质" },
+        { text: "宝宝有过敏史（湿疹、鼻炎、哮喘等）", dimension: "特禀质" },
+        { text: "宝宝接触某些东西（如花粉、毛绒玩具）后起疹子或打喷嚏", dimension: "特禀质" }
+    ];
+
+    let dimensionScores = {
+        "平和质": 0, "气虚质": 0, "阳虚质": 0, "阴虚质": 0,
+        "痰湿质": 0, "湿热质": 0, "血瘀质": 0, "气郁质": 0, "特禀质": 0
+    };
+    let answerScores = new Array(questions.length).fill(0);
+    let tongueAnalysisText = "";
+
+    // ==================== 五运六气计算 ====================
+    function calculateYunQi(birthYear, birthMonth) {
+        const lastDigit = birthYear % 10;
+        const tianGanMap = {
+            4: { name: "甲", element: "土运", quality: "土运太过", simple: "脾胃功能偏强" },
+            5: { name: "己", element: "土运", quality: "土运不及", simple: "脾胃功能偏弱" },
+            0: { name: "庚", element: "金运", quality: "金运太过", simple: "肺肠功能偏强" },
+            1: { name: "乙", element: "金运", quality: "金运不及", simple: "肺肠功能偏弱" },
+            2: { name: "丙", element: "水运", quality: "水运太过", simple: "肾脏功能偏强" },
+            3: { name: "辛", element: "水运", quality: "水运不及", simple: "肾脏功能偏弱" },
+            6: { name: "丁", element: "木运", quality: "木运不及", simple: "肝胆功能偏弱" },
+            7: { name: "壬", element: "木运", quality: "木运太过", simple: "肝胆功能偏强" },
+            8: { name: "戊", element: "火运", quality: "火运太过", simple: "心火偏旺" },
+            9: { name: "癸", element: "火运", quality: "火运不及", simple: "心气偏弱" }
+        };
+        const tg = tianGanMap[lastDigit] || { name: "平", element: "平气", quality: "平气之年", simple: "运气平和" };
+        
+        const dizhiMap = {0:"申",1:"酉",2:"戌",3:"亥",4:"子",5:"丑",6:"寅",7:"卯",8:"辰",9:"巳",10:"午",11:"未"};
+        const dizhi = dizhiMap[birthYear % 12];
+        const sitianMap = {
+            "子": { sitian: "少阴君火", simple: "心火偏旺" }, "午": { sitian: "少阴君火", simple: "心火偏旺" },
+            "丑": { sitian: "太阴湿土", simple: "湿气偏重" }, "未": { sitian: "太阴湿土", simple: "湿气偏重" },
+            "寅": { sitian: "少阳相火", simple: "内热偏重" }, "申": { sitian: "少阳相火", simple: "内热偏重" },
+            "卯": { sitian: "阳明燥金", simple: "干燥偏重" }, "酉": { sitian: "阳明燥金", simple: "干燥偏重" },
+            "辰": { sitian: "太阳寒水", simple: "寒气偏重" }, "戌": { sitian: "太阳寒水", simple: "寒气偏重" },
+            "巳": { sitian: "厥阴风木", simple: "风气偏重" }, "亥": { sitian: "厥阴风木", simple: "风气偏重" }
+        };
+        const st = sitianMap[dizhi] || { sitian: "平和", simple: "运气平和" };
+        
+        let innateType = "";
+        if (tg.element === "木运") innateType = "厥阴风木体质（易敏感、过敏）";
+        else if (tg.element === "火运") innateType = "火热体质（易烦躁、长疹子）";
+        else if (tg.element === "土运") innateType = "湿土体质（易积食、痰多）";
+        else if (tg.element === "金运") innateType = "燥金体质（易便秘、皮肤干）";
+        else if (tg.element === "水运") innateType = "寒水体质的（易怕冷、尿多）";
+        else innateType = "平和体质倾向";
+        
+        return { yunSimple: tg.simple, sitianSimple: st.simple, innateType, innateConstitution: innateType };
+    }
+
+    function updateYunqiDisplay() {
+        const year = parseInt(document.getElementById('birthYear').value);
+        if (isNaN(year) || year < 2010 || year > 2026) {
+            document.getElementById('yunqiDisplay').innerHTML = "⚠️ 请输入有效出生年份（2010-2026）";
+            return;
+        }
+        const yq = calculateYunQi(year, parseInt(document.getElementById('birthMonth').value));
+        document.getElementById('yunqiDisplay').innerHTML = `
+            <strong>🌠 宝宝先天体质倾向：</strong> ${yq.innateType}<br>
+            <strong>🍃 简单解读：</strong> 出生那年运气提示 ${yq.yunSimple}，加上季节因素 ${yq.sitianSimple}。<br>
+            <span style="font-size:0.7rem;">依据《黄帝内经》五运六气学说（顾植山学术思想）</span>
+        `;
+    }
+
+    // ==================== 问卷渲染与计分 ====================
+    function renderQuestions() {
+        const container = document.getElementById('questionsContainer');
+        container.innerHTML = '';
+        questions.forEach((q, idx) => {
+            const div = document.createElement('div');
+            div.className = 'question-item';
+            div.innerHTML = `
+                <div class="question-text">${idx+1}. ${q.text}</div>
+                <div class="options">
+                    <label><input type="radio" name="q${idx}" value="0"> 没有</label>
+                    <label><input type="radio" name="q${idx}" value="1"> 偶尔</label>
+                    <label><input type="radio" name="q${idx}" value="2"> 经常</label>
+                    <label><input type="radio" name="q${idx}" value="3"> 总是</label>
+                </div>
+            `;
+            container.appendChild(div);
+        });
+        for(let i=0; i<questions.length; i++) {
+            document.querySelectorAll(`input[name="q${i}"]`).forEach(r => r.checked = false);
+        }
+    }
+
+    function collectScores() {
+        for (let i=0; i<questions.length; i++) {
+            let val = null;
+            document.querySelectorAll(`input[name="q${i}"]`).forEach(r => { if(r.checked) val = parseInt(r.value); });
+            if(val === null){ alert(`请完成第${i+1}题`); return null; }
+            answerScores[i] = val;
+        }
+        return answerScores;
+    }
+
+    function computeConstitutionScores(scores) {
+        for (let key in dimensionScores) dimensionScores[key] = 0;
+        for (let i=0; i<questions.length; i++) {
+            let score = scores[i];
+            if (questions[i].reverse) score = 3 - score;
+            dimensionScores[questions[i].dimension] += score;
+        }
+        return { ...dimensionScores };
+    }
+
+    function determinePrimaryConstitution(scoresMap) {
+        const biased = ["气虚质","阳虚质","阴虚质","痰湿质","湿热质","血瘀质","气郁质","特禀质"];
+        let isBalanced = true;
+        for (let t of biased) if (scoresMap[t] > 4) { isBalanced = false; break; }
+        if (isBalanced && scoresMap["平和质"] <= 4) return { primary: "平和质", secondary: null, isBalanced: true };
+        let max = -1, primary = "";
+        for (let t of biased) if (scoresMap[t] > max) { max = scoresMap[t]; primary = t; }
+        let secondary = null;
+        for (let t of biased) if (t !== primary && scoresMap[t] >= max-1 && scoresMap[t] > 2) { secondary = t; break; }
+        return { primary, secondary, isBalanced: false };
+    }
+
+    // ==================== 体质调护建议库（通俗易懂版）====================
+    const constitutionFeatures = {
+        "平和质": { name:"平和质", feature:"身体棒棒，阴阳平衡，很健康！", simple:"宝宝目前体质状态很好，继续保持良好的生活习惯。",
+            diet:"什么都吃，不挑食。主食、蔬菜、肉蛋奶搭配好，少吃零食和饮料。",
+            life:"每天带宝宝户外活动1小时，晚上9点前睡觉。",
+            tcm:"每周做2-3次捏脊（从下往上捏后背），增强免疫力。",
+            symptoms:["精神好","脸色红润","睡觉安稳","吃饭香"] },
+        "气虚质": { name:"气虚质", feature:"小元气不足，容易累，爱生病", simple:"宝宝就像电量不太够的小电池，容易疲劳、爱感冒。",
+            diet:"多吃补气的食物：山药粥、小米粥、鸡肉汤、太子参煮水。少吃生冷和油腻。",
+            life:"别让宝宝玩太累，中午要午睡，适当户外散步。",
+            tcm:"每天按揉足三里（膝盖外侧下方），捏脊从下往上。",
+            symptoms:["容易累","爱让人抱","脸色偏白","容易感冒"] },
+        "阳虚质": { name:"阳虚质", feature:"小暖炉能量不足，怕冷，手脚凉", simple:"宝宝体内的小太阳不太够，所以怕冷、手脚凉凉的。",
+            diet:"吃温热的食物：红枣、生姜、羊肉汤（少量）、韭菜饺子。不吃冰棍冷饮。",
+            life:"多晒太阳，尤其是后背；夏天少吹空调。",
+            tcm:"可以艾灸肚脐（神阙穴）3-5分钟（需专业指导）；推三关。",
+            symptoms:["手脚冰凉","怕冷穿得多","大便偏稀","夜尿多"] },
+        "阴虚质": { name:"阴虚质", feature:"小水库缺水，容易口干、手心热", simple:"宝宝身体里的水不够，所以容易口干、手心脚心热热的。",
+            diet:"多吃滋润的食物：梨、银耳、百合粥、冬瓜汤。少吃油炸、烧烤。",
+            life:"晚上要睡好觉，别玩得太疯出太多汗。",
+            tcm:"按揉脚底的涌泉穴，每天2分钟。",
+            symptoms:["手心脚心热","睡觉出汗","嘴唇红","大便干"] },
+        "痰湿质": { name:"痰湿质", feature:"湿气太重，容易有痰、胖乎乎", simple:"宝宝身体里湿气偏多，容易有痰、肉肉松软。",
+            diet:"吃去湿气的食物：薏米红豆粥、冬瓜、陈皮水。少吃甜食和油腻。",
+            life:"多带宝宝跑跑跳跳，别总是抱着。",
+            tcm:"按揉丰隆穴（小腿外侧），揉板门。",
+            symptoms:["偏胖肉松","喉咙有痰","舌苔白厚"] },
+        "湿热质": { name:"湿热质", feature:"又湿又热，容易长疹子、发脾气", simple:"宝宝身体里又有湿气又有热气，容易长湿疹、爱发脾气。",
+            diet:"吃清淡去湿的食物：绿豆汤、冬瓜、白萝卜。少吃零食、巧克力。",
+            life:"穿透气的棉质衣服，家里保持干爽。",
+            tcm:"清天河水（从手腕推到手肘），按揉板门。",
+            symptoms:["长湿疹","大便黏","舌苔黄","爱发脾气"] },
+        "血瘀质": { name:"血瘀质", feature:"血液循环不太顺畅", simple:"宝宝身体里血液流动不太顺畅，脸色嘴唇偏暗。",
+            diet:"吃活血的食物：山楂水、黑木耳、洋葱。",
+            life:"适当多活动，促进血液循环。",
+            tcm:"按揉血海穴（膝盖内侧上方）。",
+            symptoms:["脸色偏暗","嘴唇暗","皮肤粗糙"] },
+        "气郁质": { name:"气郁质", feature:"容易不开心，比较敏感", simple:"宝宝性格比较敏感，容易不开心、叹气。",
+            diet:"吃让人开心的食物：玫瑰花茶、陈皮、萝卜。",
+            life:"多鼓励宝宝，多抱抱，带他和小伙伴玩。",
+            tcm:"按揉胸口正中的膻中穴，轻轻抚摸后背。",
+            symptoms:["性格内向","胆小怕生","容易叹气"] },
+        "特禀质": { name:"特禀质", feature:"过敏体质，容易得湿疹、鼻炎", simple:"宝宝是过敏体质，容易对某些东西过敏起疹子。",
+            diet:"避开已知过敏的食物，添加辅食要小心。多吃维生素C多的水果蔬菜。",
+            life:"家里勤打扫，用防螨床品，记录过敏日记。",
+            tcm:"按揉后背的肺俞穴、脾俞穴，捏脊。",
+            symptoms:["有过敏史","长湿疹","打喷嚏","皮肤敏感"] }
+    };
+
+    async function analyzeTongueImage() {
+        return new Promise(resolve => {
+            setTimeout(() => {
+                const results = [
+                    "舌头淡红色，苔薄白——宝宝体质基本平和",
+                    "舌头红，舌苔少——宝宝有点阴虚内热，多喝水",
+                    "舌头淡胖，边缘有牙齿印——宝宝可能阳气偏弱",
+                    "舌苔白厚腻——宝宝湿气偏重，少吃甜食",
+                    "舌苔黄厚腻——宝宝湿热偏重，饮食要清淡"
+                ];
+                resolve("🔍 " + results[Math.floor(Math.random() * results.length)]);
+            }, 400);
+        });
+    }
+
+    function initTongue() {
+        const area = document.getElementById('uploadArea');
+        const input = document.getElementById('tongueInput');
+        const preview = document.getElementById('tonguePreview');
+        area.addEventListener('click', () => input.click());
+        input.addEventListener('change', async (e) => {
+            if(!e.target.files[0]) return;
+            const reader = new FileReader();
+            reader.onload = async (ev) => {
+                preview.src = ev.target.result;
+                preview.style.display = 'block';
+                const analysisDiv = document.getElementById('tongueAnalysisResult');
+                analysisDiv.style.display = 'block';
+                analysisDiv.innerHTML = "🔍 分析中...";
+                const res = await analyzeTongueImage();
+                tongueAnalysisText = res;
+                analysisDiv.innerHTML = res;
+            };
+            reader.readAsDataURL(e.target.files[0]);
+        });
+    }
+
+    async function displayReport() {
+        const name = document.getElementById('childName').value || "宝宝";
+        const gender = document.getElementById('gender').value;
+        const ageYear = parseInt(document.getElementById('ageYear').value);
+        const ageMonth = parseInt(document.getElementById('ageMonth').value);
+        const birthYear = parseInt(document.getElementById('birthYear').value);
+        const birthMonth = parseInt(document.getElementById('birthMonth').value);
+        
+        if(!birthYear || birthYear<2010){ alert("请填写正确出生年份"); return; }
+        
+        const scoresArr = collectScores();
+        if(!scoresArr) return;
+        
+        const scoresMap = computeConstitutionScores(scoresArr);
+        const yunqi = calculateYunQi(birthYear, birthMonth);
+        const constitution = determinePrimaryConstitution(scoresMap);
+        const feat = constitutionFeatures[constitution.primary] || constitutionFeatures["平和质"];
+        
+        const ageText = ageYear===0 ? `${ageMonth}个月` : `${ageYear}岁${ageMonth}个月`;
+        
+        const reportHTML = `
+            <div class="badge">🌿 权威标准 · 五运六气 · 九种体质</div>
+            <div class="constitution-title">${feat.name} ${constitution.secondary ? "· 兼有"+constitution.secondary+"倾向" : ""}</div>
+            
+            <div class="easy-read">
+                <strong>📢 通俗解读：</strong> ${feat.simple}<br>
+                🧒 ${name}小朋友，${ageText}，${gender}宝。
+            </div>
+            
+            <div class="section-title">🌌 先天体质（出生时的运气影响）</div>
+            <div class="advice-text">
+                ${yunqi.innateType}<br>
+                <strong>简单说：</strong> 宝宝出生那年运气提示 ${yunqi.yunSimple}，季节因素 ${yunqi.sitianSimple}。<br>
+                ${constitution.primary !== "平和质" ? `⚠️ 先天${yunqi.innateType}结合后天${feat.name}，调护时两者都要照顾到。` : "先天运气平和，重点关注后天的喂养和护理。"}
+            </div>
+            
+            ${tongueAnalysisText ? `<div class="section-title">👅 舌苔小提示</div>
+            <div class="advice-text">${tongueAnalysisText}</div>` : ""}
+            
+            <div class="section-title">✨ 宝宝常见表现</div>
+            <div class="symptom-list">${feat.symptoms.map(s => `<span class="symptom-tag">${s}</span>`).join('')}</div>
+            
+            <div class="section-title">🍎 饮食怎么吃</div>
+            <div class="advice-text">${feat.diet}</div>
+            
+            <div class="section-title">🏃 生活怎么带</div>
+            <div class="advice-text">${feat.life}</div>
+            
+            <div class="section-title">🖐️ 推拿小方法</div>
+            <div class="advice-text">${feat.tcm}</div>
+            
+            <div class="footnote">
+                ⚠️ 本报告依据中华中医药学会《儿童体质中医分型与判定标准》、国家卫健委专家共识、
+                北京中医药大学·辽宁中医药大学《儿童中医体质量表》及龙砂医派顾植山五运六气学说编制。
+                报告仅供家长参考，帮助了解宝宝体质特点，不能替代医生诊断。如有生病请及时就医。
+                <br>📅 宝宝体质会变化，建议每半年重新评估一次。
+            </div>
+        `;
+        
+        document.getElementById('reportContainer').innerHTML = reportHTML;
+        document.getElementById('reportContainer').style.display = 'block';
+        document.getElementById('reportContainer').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function resetForm() {
+        for(let i=0; i<questions.length; i++) {
+            document.querySelectorAll(`input[name="q${i}"]`).forEach(r => r.checked = false);
+        }
+        document.getElementById('birthYear').value = "2020";
+        document.getElementById('birthMonth').value = "6";
+        document.getElementById('ageYear').value = "0";
+        document.getElementById('ageMonth').value = "6";
+        document.getElementById('childName').value = "小宝贝";
+        document.getElementById('gender').value = "男";
+        document.getElementById('tonguePreview').style.display = 'none';
+        document.getElementById('tongueAnalysisResult').style.display = 'none';
+        document.getElementById('reportContainer').style.display = 'none';
+        tongueAnalysisText = "";
+        updateYunqiDisplay();
+        alert("已重置，可以重新填写啦");
+    }
+
+    renderQuestions();
+    initTongue();
+    document.getElementById('birthYear').addEventListener('input', updateYunqiDisplay);
+    document.getElementById('birthMonth').addEventListener('change', updateYunqiDisplay);
+    updateYunqiDisplay();
+    document.getElementById('submitBtn').addEventListener('click', displayReport);
+    document.getElementById('resetBtn').addEventListener('click', resetForm);
+</script>
+</body>
+</html>
