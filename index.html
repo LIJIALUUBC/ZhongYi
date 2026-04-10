@@ -416,6 +416,299 @@
         hr {
             opacity: 0.3;
         }
+
+        /* 按钮作为链接时保持按钮外观 */
+        .btn-primary,
+        .btn-primary:hover,
+        .btn-primary:focus,
+        .btn-secondary,
+        .btn-secondary:hover,
+        .btn-secondary:focus {
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        /* 平板 */
+        @media (max-width: 1024px) {
+            body {
+                padding: 16px;
+                align-items: flex-start;
+            }
+
+            .top-tip,
+            .navbar,
+            .main-content,
+            .about-wrapper,
+            .footer {
+                padding-left: 24px;
+                padding-right: 24px;
+            }
+
+            .navbar {
+                flex-wrap: wrap;
+                gap: 16px;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                gap: 18px;
+                font-size: 0.98rem;
+            }
+
+            .hero {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 24px;
+                padding: 32px 28px;
+            }
+
+            .hero-left h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-desc {
+                font-size: 1.05rem;
+                max-width: 100%;
+            }
+
+            .hero-right {
+                width: 100%;
+                max-width: 420px;
+            }
+
+            .feature-grid,
+            .info-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title,
+            .about-title {
+                font-size: 1.7rem;
+            }
+
+            .footer-copyright {
+                flex-direction: column;
+                gap: 12px;
+            }
+        }
+
+        /* 手机 */
+        @media (max-width: 768px) {
+            body {
+                padding: 0;
+                display: block;
+                min-height: auto;
+            }
+
+            .webpage-card {
+                border-radius: 0;
+                border: none;
+                box-shadow: none;
+            }
+
+            .top-tip {
+                padding: 10px 14px;
+                gap: 10px;
+                font-size: 0.78rem;
+            }
+
+            .tip-left,
+            .tip-right {
+                width: 100%;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .navbar {
+                padding: 14px 16px;
+                align-items: flex-start;
+                gap: 14px;
+            }
+
+            .logo-area {
+                flex-wrap: wrap;
+            }
+
+            .logo-text {
+                font-size: 1.5rem;
+            }
+
+            .logo-tag {
+                margin-left: 0;
+            }
+
+            .nav-links {
+                width: 100%;
+                gap: 12px 18px;
+                font-size: 0.95rem;
+            }
+
+            .nav-extra {
+                margin-left: 0;
+                padding: 7px 14px;
+            }
+
+            .main-content {
+                padding: 18px 16px 16px 16px;
+            }
+
+            .hero {
+                padding: 24px 18px;
+                border-radius: 22px;
+                margin-bottom: 28px;
+            }
+
+            .hero-left h1 {
+                font-size: 1.9rem;
+                line-height: 1.25;
+            }
+
+            .hero-desc {
+                font-size: 0.98rem;
+                margin-bottom: 20px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                padding: 13px 18px;
+                font-size: 1rem;
+            }
+
+            .hero-right {
+                width: 100%;
+                max-width: none;
+                padding: 20px 18px;
+                border-radius: 26px;
+            }
+
+            .hero-right .ai-badge {
+                font-size: 1.12rem;
+            }
+
+            .feature-grid {
+                gap: 16px;
+                margin: 28px 0;
+            }
+
+            .feature-card {
+                padding: 22px 16px 24px 16px;
+                border-radius: 18px;
+            }
+
+            .feature-card h3 {
+                font-size: 1.45rem;
+                padding-left: 12px;
+            }
+
+            .feature-card p,
+            .info-item p,
+            .about-text,
+            .footer-col li {
+                font-size: 0.95rem;
+            }
+
+            .section-title,
+            .about-title {
+                font-size: 1.45rem;
+                line-height: 1.3;
+            }
+
+            .section-title {
+                flex-wrap: wrap;
+            }
+
+            .info-section {
+                margin: 32px 0 24px 0;
+            }
+
+            .info-cards {
+                gap: 16px;
+            }
+
+            .info-item {
+                padding: 18px 16px;
+                border-radius: 16px;
+            }
+
+            .info-item h4 {
+                font-size: 1.1rem;
+            }
+
+            .about-wrapper {
+                padding: 22px 16px;
+                margin: 28px 0 24px 0;
+                border-radius: 22px;
+            }
+
+            .about-flex {
+                gap: 20px;
+            }
+
+            .about-stats {
+                width: 100%;
+                padding: 22px 16px;
+                border-radius: 18px;
+            }
+
+            .stat-number {
+                font-size: 1.8rem;
+            }
+
+            .footer {
+                padding: 26px 16px 22px 16px;
+                margin-top: 28px;
+            }
+
+            .footer-links {
+                gap: 24px;
+                margin-bottom: 20px;
+            }
+
+            .footer-col p {
+                margin-bottom: 10px;
+                font-size: 1rem;
+            }
+
+            .footer-copyright .legal a {
+                display: inline-block;
+                margin: 8px 14px 0 0;
+            }
+        }
+
+        /* 小屏手机 */
+        @media (max-width: 480px) {
+            .hero-left h1 {
+                font-size: 1.65rem;
+            }
+
+            .hero-desc {
+                font-size: 0.92rem;
+            }
+
+            .logo-text {
+                font-size: 1.35rem;
+            }
+
+            .nav-links {
+                font-size: 0.9rem;
+            }
+
+            .feature-card h3 {
+                font-size: 1.28rem;
+            }
+
+            .section-title,
+            .about-title {
+                font-size: 1.28rem;
+            }
+        }
     </style>
 </head>
 <body>
